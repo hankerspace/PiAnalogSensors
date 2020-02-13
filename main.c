@@ -54,9 +54,9 @@ int main(void)
         float v2 = (ADC[V_2]*5.0/0x7fffff) / (R2/(R1+R2));
         printf("V1=%f\r\n",v1);
         printf("V2=%f\r\n",v2);
-        float a1 = (ADC[SCT013_1]*5.0/0x7fffff) );
-        float a2 = (ADC[SCT013_2]*5.0/0x7fffff) );
-        float a3 = (ADC[SCT013_3]*5.0/0x7fffff) );
+        float a1 = (ADC[SCT013_1]*5.0/0x7fffff);
+        float a2 = (ADC[SCT013_2]*5.0/0x7fffff);
+        float a3 = (ADC[SCT013_3]*5.0/0x7fffff);
         printf("A1=%f\r\n",a1);
         printf("A2=%f\r\n",a2);
         printf("A3=%f\r\n",a3);
