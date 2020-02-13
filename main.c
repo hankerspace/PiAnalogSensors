@@ -67,7 +67,7 @@ int main(void)
         DAC8532_Out_Voltage(channel_B, (x));
         DAC8532_Out_Voltage(channel_A, (3.3 - x));
 
-        sleep(1)
+        sleep(1);
 
     }
     return 0;
