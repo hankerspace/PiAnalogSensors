@@ -14,7 +14,7 @@ LIB = -lbcm2835 -lm
 ${TARGET}:${OBJ_O}
 	$(CC) $(CFLAGS) $(OBJ_O) -o $@  $(LIB)
 
-${DIR_BIN}/%.o : /%.c
+${DIR_BIN}/%.o : %.c
 	$(CC) $(CFLAGS) -c  $< -o $@  $(LIB)
 
 
