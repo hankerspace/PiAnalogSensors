@@ -37,6 +37,7 @@ void  Handler(int signo)
 
 double calcIrms(unsigned int Number_of_Samples, UBYTE pin)
 {
+    double Irms;
     for (unsigned int n = 0; n < Number_of_Samples; n++)
     {
         sampleI = ADS1256_GetChannalValue(pin);
