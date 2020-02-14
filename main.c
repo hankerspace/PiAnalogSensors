@@ -48,6 +48,7 @@ int main(void)
     
     long count = 0;
     double sum = 0;
+    double IVAL = 0;
     while(1){
         count++;
 
@@ -58,14 +59,12 @@ int main(void)
         sum +=  ADC[0] * 5.0 / 0x7fffff;
 
         if(count % 1000 == 0) {
-            printf("SUM : %f  \r\n", sum / 1000.0f);
+            IVAL = sum / 1000.0f;
             sum = 0;
         }
-       	else {
-		printf("");	
-	} 
 
-	printf("\33[8A");//Move the cursor up 8 lines
+        printf("IVAL : %f  \r\n", IVAL);
+	    printf("\33[9A");//Move the cursor up 8 lines
 
 
         /*float v1 = (ADC[V_1]*5.0/0x7fffff) / (R2/(R1+R2));
