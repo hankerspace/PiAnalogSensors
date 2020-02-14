@@ -99,8 +99,8 @@ int main(void)
         printf("A1=%f\r\n",a1);
         printf("A2=%f\r\n",a2);
         printf("A3=%f\r\n",a3);
-        float ax = calcIrms(1480, SCT013_1);
-        printf("AX=%f\r\n",ax);
+        /*float ax = calcIrms(1480, SCT013_1);
+        printf("AX=%f\r\n",ax);*/
         printf("\r\n\r\n");
 
         // Adapt voltage
