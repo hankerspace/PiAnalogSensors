@@ -61,7 +61,11 @@ int main(void)
             printf("SUM : %f  \r\n", sum / 1000.0f);
             sum = 0;
         }
-        printf("\33[9A");//Move the cursor up 8 lines
+       	else {
+		printf("");	
+	} 
+
+	printf("\33[8A");//Move the cursor up 8 lines
 
 
         /*float v1 = (ADC[V_1]*5.0/0x7fffff) / (R2/(R1+R2));
