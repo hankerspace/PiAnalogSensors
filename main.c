@@ -49,22 +49,30 @@ int main(void)
     long count = 0;
     double sum = 0;
     double IVAL = 0;
+    double minI, maxI;
     while(1){
         count++;
 
-        ADS1256_GetAll(ADC);
+        /*ADS1256_GetAll(ADC);
         for(i=0;i<8;i++) {
-            printf("%d %f\r\n", i, ADC[i] * 5.0 / 0x7fffff);
-        }
-        sum +=  ADC[0] * 5.0 / 0x7fffff;
+            printf("Volt A%d %f\r\n", i, ADC[i] * 5.0 / 0x7fffff);
+        }*/
 
-        if(count % 1000 == 0) {
-            IVAL = sum / 1000.0f;
+        // Calc current
+        double ADC0 = ADS1256_GetChannalValue(0) * 5.0 / 0x7fffff;
+        printf("Volt A0 %f\r\n", ADC0);
+        if(minI > ADC0) minI = ADC0;
+        if(maxI < ADC0) maxI = ADC0;
+
+        if(count % 100 == 0) {
+            //IVAL = sum / 100.0f;
+            IVAL = (minI + maxI) / 2;
+            minI = maxI = ADC0;
             sum = 0;
         }
 
         printf("IVAL : %f  \r\n", IVAL);
-	    printf("\33[9A");//Move the cursor up 8 lines
+	    printf("\33[1A");//Move the cursor up 8 lines
 
 
         /*float v1 = (ADC[V_1]*5.0/0x7fffff) / (R2/(R1+R2));
@@ -80,11 +88,6 @@ int main(void)
         float ax = calcIrms(1480, SCT013_1);
         printf("AX=%f\r\n",ax);
         printf("\r\n\r\n");*/
-
-        // Adapt voltage
-        x = (ADC[0] >> 7)*5.0/0xffff;
-        DAC8532_Out_Voltage(channel_B, (x));
-        DAC8532_Out_Voltage(channel_A, (3.3 - x));
 
         //sleep(1);
 
